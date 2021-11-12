@@ -20,7 +20,7 @@ public class sesion extends javax.swing.JFrame {
     public sesion() {
         initComponents();
     }
-    Registro m =new Registro();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,15 +127,20 @@ public class sesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Registro m =new Registro();
         String usuario1,contra1;
         usuario1= txtusuario.getText();
         contra1= txtcontra.getText();
         usuarios =m.getUsuarios();
-        for (Usuarios usuario2 : usuarios){
-            if (usuario2.getUsuario().equals(usuario1) && usuario2.getContraseña().equals(contra1)){
-                JOptionPane.showMessageDialog(null, "Ingresado exitosamente");
-            }else{
-                JOptionPane.showMessageDialog(null, "El usuario o contraseña es incorrecto");
+        if (usuarios.size()==0){
+            JOptionPane.showMessageDialog(null, "No hay usuarios registrados");
+        }else{
+            for (Usuarios usuario2 : usuarios){
+                if (usuario2.getUsuario().equals(usuario1) && usuario2.getContraseña().equals(contra1)){
+                    JOptionPane.showMessageDialog(null, "Ingresado exitosamente");
+                }else{
+                    JOptionPane.showMessageDialog(null, "El usuario o contraseña es incorrecto");
+                }
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -145,7 +150,7 @@ public class sesion extends javax.swing.JFrame {
     }//GEN-LAST:event_txtusuarioActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        Registro m =new Registro();
         m.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed

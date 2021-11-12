@@ -12,7 +12,6 @@ public class Registro extends javax.swing.JFrame {
     public ArrayList <Videojuegos> comprado=new ArrayList();
     public ArrayList <Videojuegos> vendido=new ArrayList();
     public Registro() {
-        
         initComponents();
     }
 
@@ -40,7 +39,7 @@ public class Registro extends javax.swing.JFrame {
         this.vendido = vendido;
     }
     
-    sesion m =new sesion();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -205,7 +204,7 @@ public class Registro extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nombre, usuario, contraseña,personaje,tipo;
         int edad, cuenta,dinero;
-        
+        sesion m =new sesion();
         
         nombre = txtnombre.getText();
         usuario = txtusuario.getText();
