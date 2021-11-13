@@ -125,18 +125,41 @@ public class sesion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    Registro m =new Registro();
 
+    public ArrayList<Usuarios> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(ArrayList<Usuarios> usuarios) {
+        this.usuarios = usuarios;
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Registro m =new Registro();
+        Basededatos f =new Basededatos();
+        Administracion a =new Administracion();
+        compras b=new compras();
+        vendidos c=new vendidos();
         String usuario1,contra1;
         usuario1= txtusuario.getText();
         contra1= txtcontra.getText();
-        usuarios =m.getUsuarios();
+        usuarios = f.getUsuarios();
         if (usuarios.size()==0){
             JOptionPane.showMessageDialog(null, "No hay usuarios registrados");
         }else{
             for (Usuarios usuario2 : usuarios){
                 if (usuario2.getUsuario().equals(usuario1) && usuario2.getContraseña().equals(contra1)){
+                    f.setIngresado(usuario1);
+                    if (usuario2 instanceof Administrador){
+                        a.setVisible(true);
+                        this.setVisible(false);
+                    }else if(usuario2 instanceof Comprador){
+                        b.setVisible(true);
+                        this.setVisible(false);
+                    }else if (usuario2 instanceof Vendedor){
+                        c.setVisible(true);
+                        this.setVisible(false);
+                    }
                     JOptionPane.showMessageDialog(null, "Ingresado exitosamente");
                 }else{
                     JOptionPane.showMessageDialog(null, "El usuario o contraseña es incorrecto");
@@ -150,7 +173,7 @@ public class sesion extends javax.swing.JFrame {
     }//GEN-LAST:event_txtusuarioActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Registro m =new Registro();
+        
         m.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed

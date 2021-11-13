@@ -203,9 +203,9 @@ public class Registro extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nombre, usuario, contraseña,personaje,tipo;
-        int edad, cuenta,dinero;
-        sesion m =new sesion();
-        
+        int edad, cuenta,dinero,saldo;
+        Basededatos f =new Basededatos();
+        sesion m = new sesion();
         nombre = txtnombre.getText();
         usuario = txtusuario.getText();
         contraseña = txtcontra.getText();
@@ -213,23 +213,28 @@ public class Registro extends javax.swing.JFrame {
         edad = Integer.parseInt(txtedad.getText());
         cuenta = Integer.parseInt(txtcuenta.getText());
         dinero = 100+r.nextInt(700);
+        saldo = 2000+r.nextInt(8000);
+        usuarios=f.getUsuarios();
         if (jRadioButton1.isSelected()){
             usuarios.add(new Administrador(nombre,usuario,contraseña,edad));
             JOptionPane.showMessageDialog(null, "Registrado exitosamente");
             m.setVisible(true);
             this.setVisible(false);
+            f.setUsuarios(usuarios);
         }
         if (jRadioButton2.isSelected()){
-            usuarios.add(new Comprador(comprado, dinero, cuenta,personaje,nombre, usuario, contraseña, edad));
+            usuarios.add(new Comprador(comprado, dinero, cuenta,personaje,saldo,nombre, usuario, contraseña, edad));
             JOptionPane.showMessageDialog(null, "Registrado exitosamente");
             m.setVisible(true);
             this.setVisible(false);
+            f.setUsuarios(usuarios);
         }
         if (jRadioButton3.isSelected()){
-            usuarios.add(new Vendedor(0, cuenta, dinero, vendido, personaje,nombre, usuario, contraseña, edad));
+            usuarios.add(new Vendedor(0, cuenta, dinero, vendido, personaje,saldo,nombre, usuario, contraseña, edad));
             JOptionPane.showMessageDialog(null, "Registrado exitosamente");
             m.setVisible(true);
             this.setVisible(false);
+            f.setUsuarios(usuarios);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
